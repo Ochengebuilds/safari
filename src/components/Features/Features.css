@@ -1,62 +1,160 @@
 .features-section {
   padding: 100px 0;
-  background-color: var(--color-base);
+  background-color: var(--color-base); /* #E3FDFD */
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .features-container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 90%;
   max-width: 1200px;
   margin: 0 auto;
-  gap: 80px;
+  gap: 60px;
 }
 
-.features-image-side {
+/* VISUAL SIDE */
+.features-visual {
   flex: 1;
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
-.feat-img-1 {
+.image-card-main {
   width: 100%;
-  border-radius: 20px;
-  box-shadow: var(--shadow-3d);
+  max-width: 500px;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(113, 201, 206, 0.4);
+  transform: perspective(1000px) rotateY(-5deg);
+  transition: 0.5s ease;
 }
 
-.experience-badge {
+.image-card-main img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.experience-sticker {
   position: absolute;
   bottom: -20px;
-  right: -20px;
-  background: var(--accent-gold); /* Or your accent teal */
+  right: -10px;
+  background: var(--color-deep); /* #71C9CE */
   color: white;
-  padding: 25px;
+  padding: 20px 30px;
   border-radius: 15px;
+  box-shadow: 10px 10px 0px var(--color-muted);
+  z-index: 2;
   text-align: center;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-.features-text-side { flex: 1; }
-
-.section-subtitle { color: var(--color-deep); margin-bottom: 10px; }
-.section-title { font-size: 2.5rem; margin-bottom: 20px; }
-.section-desc { margin-bottom: 30px; color: #666; }
-
-.feature-tabs {
-  display: flex;
-  gap: 20px;
-  border-bottom: 1px solid var(--color-muted);
-  margin-bottom: 20px;
+.sticker-num {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
 }
 
-.tab-btn {
-  background: none;
-  border: none;
-  padding: 10px 0;
-  font-weight: 700;
-  cursor: pointer;
-  color: #999;
+.sticker-text {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
-.tab-btn.active {
+/* INFO SIDE */
+.features-info {
+  flex: 1;
+}
+
+.feat-subtitle {
   color: var(--color-deep);
-  border-bottom: 3px solid var(--color-deep);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.feat-title {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 25px;
+}
+
+.feat-description {
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+.feat-list {
+  margin-bottom: 40px;
+}
+
+.feat-list-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.feat-check {
+  color: var(--color-deep);
+  font-size: 1.2rem;
+}
+
+/* --- RESPONSIVE BREAKPOINT --- */
+
+@media screen and (max-width: 992px) {
+  .features-container {
+    flex-direction: column; /* Stack vertically */
+    gap: 80px;
+    text-align: center;
+  }
+
+  .features-visual {
+    width: 100%;
+    order: 1; /* Keep image on top */
+  }
+
+  .features-info {
+    width: 100%;
+    order: 2;
+    padding: 0 10px;
+  }
+
+  .image-card-main {
+    transform: rotate(0); /* Remove 3D tilt for easier mobile viewing */
+  }
+
+  .feat-title {
+    font-size: 2rem;
+  }
+
+  .feat-list-item {
+    justify-content: center;
+  }
+
+  .experience-sticker {
+    right: 50%;
+    transform: translateX(50%); /* Center the sticker on mobile */
+    bottom: -40px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .feat-title {
+    font-size: 1.6rem;
+  }
+
+  .experience-sticker {
+    padding: 15px 20px;
+  }
+
+  .sticker-num {
+    font-size: 1.5rem;
+  }
 }

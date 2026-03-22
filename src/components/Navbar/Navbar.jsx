@@ -1,62 +1,54 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes, faPaw } from '@fortawesome/free-solid-svg-icons';
 import './Navbar.css';
 
 const Navbar = () => {
-  const [isMobile, setIsMobile] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [click, setClick] = useState(false);
 
-  // Handle scroll effect for glassmorphism
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const toggleMenu = () => setIsMobile(!isMobile);
-  const closeMenu = () => setIsMobile(false);
+  const handleClick = () => setClick(!click);
+  const closeMobileMenu = () => setClick(false);
 
   return (
-    <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
-      <div className="nav-container">
-        {/* Logo Section */}
-        <Link to="/" className="nav-logo" onClick={closeMenu}>
-          <div className="logo-box">
-            <FontAwesomeIcon icon={faPaw} className="logo-icon" />
-          </div>
+    <nav className='navbar'>
+      <div className='nav-container'>
+        {/* Logo - Scales automatically */}
+        <Link to='/' className='nav-logo' onClick={closeMobileMenu}>
+          <FontAwesomeIcon icon={faPaw} className='logo-icon' />
           <span className="logo-text">ZOOLAND</span>
         </Link>
 
-        {/* Mobile Toggle */}
-        <div className="mobile-icon" onClick={toggleMenu}>
-          <FontAwesomeIcon icon={isMobile ? faTimes : faBars} />
+        {/* Hamburger Icon - Only visible on Mobile */}
+        <div className='menu-icon' onClick={handleClick}>
+          <FontAwesomeIcon icon={click ? faTimes : faBars} />
         </div>
 
-        {/* Navigation Menu */}
-        <ul className={isMobile ? "nav-menu active" : "nav-menu"}>
-          <li className="nav-item">
-            <NavLink to="/" className="nav-links" onClick={closeMenu}>Home</NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink to="/about" className="nav-links" onClick={closeMenu}>About Us</NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink to="/attractions" className="nav-links" onClick={closeMenu}>Attractions</NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink to="/tickets" className="nav-links mobile-only-btn" onClick={closeMenu}>
-              Get Tickets
+        {/* Navigation Menu - Slides in on Mobile */}
+        <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+          <li className='nav-item'>
+            <NavLink to='/' className='nav-links' onClick={closeMobileMenu}>
+              Home
             </NavLink>
           </li>
+          <li className='nav-item'>
+            <NavLink to='/about' className='nav-links' onClick={closeMobileMenu}>
+              About
+            </NavLink>
+          </li>
+          <li className='nav-item'>
+            <NavLink to='/attractions' className='nav-links' onClick={closeMobileMenu}>
+              Attractions
+            </NavLink>
+          </li>
+          
         </ul>
 
-        {/* Desktop Button */}
-        <div className="nav-btn-wrapper">
-          <Link to="/tickets" className="nav-action-btn">GET TICKETS</Link>
+        {/* Desktop Button - Hidden on Mobile */}
+        <div className="nav-btn-desktop">
+          <Link to='/tickets' className='btn-ticket-link'>
+            GET TICKETS
+          </Link>
         </div>
       </div>
     </nav>

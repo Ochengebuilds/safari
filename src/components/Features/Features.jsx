@@ -1,35 +1,50 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import './Features.css';
 
 const Features = () => {
   return (
     <section className="features-section">
       <div className="features-container">
-        <div className="features-image-side">
-          <img src="/src/assets/hero.png" alt="Elephant" className="feat-img-1" />
-          <div className="experience-badge">
-            <h3>20+</h3>
-            <p>Years Experience</p>
-          </div>
-        </div>
         
-        <div className="features-text-side">
-          <h4 className="section-subtitle">Why Choose Us</h4>
-          <h2 className="section-title">The Best Destination For Your Vacation</h2>
-          <p className="section-desc">
-            We provide a unique blend of adventure and relaxation, ensuring 
-            every visitor leaves with memories that last a lifetime.
-          </p>
-          
-          <div className="feature-tabs">
-            <button className="tab-btn active">Our Mission</button>
-            <button className="tab-btn">Our Vision</button>
+        {/* Left Side: 3D Image Stack */}
+        <div className="features-visual">
+          <div className="image-card-main">
+            <img src="/src/assets/hero.png" alt="Safari Experience" />
           </div>
-          <div className="tab-content">
-            <p>To protect wildlife and provide world-class education through immersive safari experiences.</p>
+          <div className="experience-sticker">
+            <span className="sticker-num">20+</span>
+            <span className="sticker-text">Years of <br/> Adventure</span>
           </div>
-          
-          <button className="btn-main">READ MORE</button>
         </div>
+
+        {/* Right Side: Text Content */}
+        <div className="features-info">
+          <h4 className="feat-subtitle">Why Choose Zooland</h4>
+          <h2 className="feat-title">The Best Destination For Your Family Vacation</h2>
+          <p className="feat-description">
+            We provide a unique blend of adventure and education, ensuring 
+            every visitor leaves with a deeper respect for the wild.
+          </p>
+
+          <div className="feat-list">
+            <div className="feat-list-item">
+              <FontAwesomeIcon icon={faCheckCircle} className="feat-check" />
+              <span>Professional Safari Guides</span>
+            </div>
+            <div className="feat-list-item">
+              <FontAwesomeIcon icon={faCheckCircle} className="feat-check" />
+              <span>Safety First Environment</span>
+            </div>
+            <div className="feat-list-item">
+              <FontAwesomeIcon icon={faCheckCircle} className="feat-check" />
+              <span>Exotic Wildlife Species</span>
+            </div>
+          </div>
+
+          <button className="btn-main">EXPLORE MORE</button>
+        </div>
+
       </div>
     </section>
   );
